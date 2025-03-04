@@ -34,17 +34,19 @@ const printPyramidPattern = ({
         case PyramidType.Alphabets: {
           for (let i = 1; i <= rows; i++) {
             console.log(
-              Array.from({ length: i }, (_, j) =>
-                String.fromCharCode(65 + j)
-              ).join(" ")
+              " ".repeat(rows - i) +
+                Array.from({ length: i }, (_, j) =>
+                  String.fromCharCode(65 + j)
+                ).join(" ")
             );
           }
           console.log();
           for (let i = 1; i <= rows; i++) {
             console.log(
-              Array.from({ length: i }, () =>
-                String.fromCharCode(65 + i - 1)
-              ).join(" ")
+              " ".repeat(rows - i) +
+                Array.from({ length: i }, () =>
+                  String.fromCharCode(65 + i - 1)
+                ).join(" ")
             );
           }
           console.log();
@@ -62,6 +64,27 @@ const printPyramidPattern = ({
           console.log();
           break;
         }
+        case PyramidType.Alphabets: {
+          for (let i = rows; i >= 1; i--) {
+            console.log(
+              " ".repeat(rows - i) +
+                Array.from({ length: i }, (_, j) =>
+                  String.fromCharCode(65 + j)
+                ).join(" ")
+            );
+          }
+          console.log();
+          for (let i = rows; i >= 1; i--) {
+            console.log(
+              " ".repeat(rows - i) +
+                Array.from({ length: i }, () =>
+                  String.fromCharCode(65 + i - 1)
+                ).join(" ")
+            );
+          }
+          console.log();
+          break;
+        }
       }
       break;
     }
@@ -74,8 +97,5 @@ const printPyramidPattern = ({
 
 // printPyramidPattern({ rows: 5, type: PyramidType.Stars, angle: Angle.Pyramid });
 // printPyramidPattern({ rows: 5, type: PyramidType.Stars, angle: Angle.PyramidInverted });
-printPyramidPattern({
-  rows: 5,
-  type: PyramidType.Alphabets,
-  angle: Angle.Pyramid,
-});
+printPyramidPattern({ rows: 5, type: PyramidType.Alphabets, angle: Angle.Pyramid });
+printPyramidPattern({ rows: 5, type: PyramidType.Alphabets, angle: Angle.PyramidInverted });
