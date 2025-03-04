@@ -1,11 +1,11 @@
-interface printPatternProps {
+interface printRightAnglePatternProps {
   rows: number;
   columns?: number;
   type: "Stars" | "Numbers" | "Alphabets" | "Binary";
   angle?: "Right-Angled" | "Right-Angled-Inverted";
 }
 
-enum Type {
+enum RightAngleType {
   Stars = "Stars",
   Numbers = "Numbers",
   Alphabets = "Alphabets",
@@ -17,24 +17,24 @@ enum Angle {
   RightAngledInverted = "Right-Angled-Inverted",
 }
 
-const printPattern = ({
+const printRightAnglePattern = ({
   rows,
   columns = rows,
   type,
   angle = "Right-Angled",
-}: printPatternProps) => {
+}: printRightAnglePatternProps) => {
   console.log(`Printing ${type} Right Angled Inverted Pattern:\n`);
   switch (angle) {
     case Angle.RightAngled: {
       switch (type) {
-        case Type.Stars: {
+        case RightAngleType.Stars: {
           for (let i = 1; i <= rows; i++) {
             console.log("* ".repeat(i));
           }
           console.log();
           break;
         }
-        case Type.Numbers: {
+        case RightAngleType.Numbers: {
           for (let i = 1; i <= rows; i++) {
             console.log(Array.from({ length: i }, (_, j) => j + 1).join(" "));
           }
@@ -50,7 +50,7 @@ const printPattern = ({
           console.log();
           break;
         }
-        case Type.Alphabets: {
+        case RightAngleType.Alphabets: {
           for (let i = 1; i <= rows; i++) {
             console.log(
               Array.from({ length: i }, (_, j) =>
@@ -77,7 +77,7 @@ const printPattern = ({
           console.log();
           break;
         }
-        case Type.Binary: {
+        case RightAngleType.Binary: {
           for (let i = 1; i <= rows; i++) {
             console.log(Array.from({ length: i }, (_, j) => j % 2).join(" "));
           }
@@ -95,21 +95,21 @@ const printPattern = ({
           break;
         }
         default:
-          console.log("Invalid Type");
+          console.log("Invalid RightAngleType");
       }
       break;
     }
 
     case Angle.RightAngledInverted: {
       switch (type) {
-        case Type.Stars: {
+        case RightAngleType.Stars: {
           for (let i = rows; i >= 1; i--) {
             console.log("* ".repeat(i));
           }
           console.log();
           break;
         }
-        case Type.Numbers: {
+        case RightAngleType.Numbers: {
           for (let i = rows; i >= 1; i--) {
             console.log(Array.from({ length: i }, (_, j) => j + 1).join(" "));
           }
@@ -125,7 +125,7 @@ const printPattern = ({
           console.log();
           break;
         }
-        case Type.Alphabets: {
+        case RightAngleType.Alphabets: {
           for (let i = rows; i >= 1; i--) {
             console.log(
               Array.from({ length: i }, (_, j) =>
@@ -160,7 +160,7 @@ const printPattern = ({
           console.log();
           break;
         }
-        case Type.Binary: {
+        case RightAngleType.Binary: {
           for (let i = rows; i >= 1; i--) {
             console.log(Array.from({ length: i }, (_, j) => j % 2).join(" "));
           }
@@ -178,7 +178,7 @@ const printPattern = ({
           break;
         }
         default:
-          console.log("Invalid Type");
+          console.log("Invalid RightAngleType");
       }
       break;
     }
@@ -188,11 +188,11 @@ const printPattern = ({
   }
 };
 
-// printPattern({ rows: 5, type: "Stars", angle: "Right-Angled" });
-// printPattern({ rows: 5, type: "Stars", angle: "Right-Angled-Inverted" });
-printPattern({ rows: 5, type: "Numbers", angle: "Right-Angled" });
-printPattern({ rows: 5, type: "Numbers", angle: "Right-Angled-Inverted" });
-// printPattern({ rows: 5, type: "Alphabets", angle: "Right-Angled" });
-// printPattern({ rows: 5, type: "Alphabets", angle: "Right-Angled-Inverted" });
-// printPattern({ rows: 5, type: "Binary", angle: "Right-Angled" });
-// printPattern({ rows: 5, type: "Binary", angle: "Right-Angled-Inverted" });
+// printRightAnglePattern({ rows: 5, type: "Stars", angle: "Right-Angled" });
+// printRightAnglePattern({ rows: 5, type: "Stars", angle: "Right-Angled-Inverted" });
+printRightAnglePattern({ rows: 5, type: "Numbers", angle: "Right-Angled" });
+printRightAnglePattern({ rows: 5, type: "Numbers", angle: "Right-Angled-Inverted" });
+// printRightAnglePattern({ rows: 5, type: "Alphabets", angle: "Right-Angled" });
+// printRightAnglePattern({ rows: 5, type: "Alphabets", angle: "Right-Angled-Inverted" });
+// printRightAnglePattern({ rows: 5, type: "Binary", angle: "Right-Angled" });
+// printRightAnglePattern({ rows: 5, type: "Binary", angle: "Right-Angled-Inverted" });
