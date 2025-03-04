@@ -23,9 +23,9 @@ const printPattern = ({
   type,
   angle = "Right-Angled",
 }: printPatternProps) => {
+  console.log(`Printing ${type} Right Angled Inverted Pattern:\n`);
   switch (angle) {
     case Angle.RightAngled: {
-      console.log(`Printing ${type} Right Angled Pattern: \n`);
       switch (type) {
         case Type.Stars: {
           for (let i = 1; i <= rows; i++) {
@@ -43,6 +43,11 @@ const printPattern = ({
             console.log(Array.from({ length: i }, (_) => i).join(" "));
           }
           console.log();
+          let counter = 1;
+          for (let i = 1; i <= rows; i++) {
+            console.log(Array.from({ length: i }, () => counter++).join(" "));
+          }
+          console.log();
           break;
         }
         case Type.Alphabets: {
@@ -58,6 +63,14 @@ const printPattern = ({
             console.log(
               Array.from({ length: i }, (_) =>
                 String.fromCharCode(65 + (i - 1))
+              ).join(" ")
+            );
+          }
+          console.log();
+          for (let i = 1; i <= rows; i++) {
+            console.log(
+              Array.from({ length: i  }, (_, j) =>
+                String.fromCharCode(65 + (rows - i) + j)
               ).join(" ")
             );
           }
@@ -88,7 +101,6 @@ const printPattern = ({
     }
 
     case Angle.RightAngledInverted: {
-      console.log(`Printing ${type} Right Angled Inverted Pattern:\n`);
       switch (type) {
         case Type.Stars: {
           for (let i = rows; i >= 1; i--) {
@@ -104,6 +116,11 @@ const printPattern = ({
           console.log();
           for (let i = rows; i >= 1; i--) {
             console.log(Array.from({ length: i }, (_) => i).join(" "));
+          }
+          console.log();
+          let counter = (rows * (rows + 1)) / 2;
+          for (let i = rows; i >= 1; i--) {
+            console.log(Array.from({ length: i }, () => counter--).join(" "));
           }
           console.log();
           break;
@@ -129,6 +146,14 @@ const printPattern = ({
             console.log(
               Array.from({ length: i }, (_, j) =>
                 String.fromCharCode(65 + (i - 1))
+              ).join(" ")
+            );
+          }
+          console.log();
+          for (let i = rows; i >= 1; i--) {
+            console.log(
+              Array.from({ length: i  }, (_, j) =>
+                String.fromCharCode(65 + (rows - i) + j)
               ).join(" ")
             );
           }
@@ -163,11 +188,11 @@ const printPattern = ({
   }
 };
 
-printPattern({ rows: 5, type: "Stars", angle: "Right-Angled" });
-printPattern({ rows: 5, type: "Stars", angle: "Right-Angled-Inverted" });
+// printPattern({ rows: 5, type: "Stars", angle: "Right-Angled" });
+// printPattern({ rows: 5, type: "Stars", angle: "Right-Angled-Inverted" });
 printPattern({ rows: 5, type: "Numbers", angle: "Right-Angled" });
 printPattern({ rows: 5, type: "Numbers", angle: "Right-Angled-Inverted" });
-printPattern({ rows: 5, type: "Alphabets", angle: "Right-Angled" });
-printPattern({ rows: 5, type: "Alphabets", angle: "Right-Angled-Inverted" });
-printPattern({ rows: 5, type: "Binary", angle: "Right-Angled" });
-printPattern({ rows: 5, type: "Binary", angle: "Right-Angled-Inverted" });
+// printPattern({ rows: 5, type: "Alphabets", angle: "Right-Angled" });
+// printPattern({ rows: 5, type: "Alphabets", angle: "Right-Angled-Inverted" });
+// printPattern({ rows: 5, type: "Binary", angle: "Right-Angled" });
+// printPattern({ rows: 5, type: "Binary", angle: "Right-Angled-Inverted" });
