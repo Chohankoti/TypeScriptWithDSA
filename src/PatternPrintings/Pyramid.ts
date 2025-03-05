@@ -1,7 +1,7 @@
 interface PyramidProps {
   rows: number;
   columns?: number;
-  type: PyramidType;
+  type?: PyramidType;
   angle?: Angle;
 }
 enum PyramidType {
@@ -13,6 +13,7 @@ enum PyramidType {
 enum Angle {
   Pyramid = "Pyramid",
   PyramidInverted = "Pyramid-Inverted",
+  Diamond = "Diamond",
 }
 const printPyramidPattern = ({
   rows,
@@ -88,8 +89,21 @@ const printPyramidPattern = ({
       }
       break;
     }
+    case Angle.Diamond: {
+      switch (type) {
+        case PyramidType.Stars: {
+          for (let i = 1; i <= 2 * rows; i++) {
+            let spaces = Math.abs(rows - i); // Controls leading spaces
+            let stars = rows - spaces; // Controls the number of stars
+            console.log(" ".repeat(spaces) + "* ".repeat(stars));
+          }
+          break;
+        }
+      }
+      break;
+    }
     default: {
-      console.log("Invalid angle type");
+      console.log("Invalid Angle");
       break;
     }
   }
@@ -97,5 +111,7 @@ const printPyramidPattern = ({
 
 // printPyramidPattern({ rows: 5, type: PyramidType.Stars, angle: Angle.Pyramid });
 // printPyramidPattern({ rows: 5, type: PyramidType.Stars, angle: Angle.PyramidInverted });
-printPyramidPattern({ rows: 5, type: PyramidType.Alphabets, angle: Angle.Pyramid });
-printPyramidPattern({ rows: 5, type: PyramidType.Alphabets, angle: Angle.PyramidInverted });
+// printPyramidPattern({ rows: 5, type: PyramidType.Alphabets, angle: Angle.Pyramid });
+// printPyramidPattern({ rows: 5, type: PyramidType.Alphabets, angle: Angle.PyramidInverted });
+printPyramidPattern({ rows: 6, type: PyramidType.Stars, angle: Angle.Diamond });
+printPyramidPattern({ rows: 7, type: PyramidType.Stars, angle: Angle.Diamond });
