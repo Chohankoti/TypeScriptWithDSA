@@ -15,6 +15,8 @@ enum Angle {
   PyramidInverted = "Pyramid-Inverted",
   Diamond = "Diamond",
 }
+const Alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
 const printPyramidPattern = ({
   rows,
   columns = rows,
@@ -28,6 +30,20 @@ const printPyramidPattern = ({
         case PyramidType.Stars: {
           for (let i = 1; i <= rows; i++) {
             console.log(" ".repeat(rows - i) + "* ".repeat(i));
+          }
+          console.log();
+          for (let i = 1; i <= rows; i++) {
+            // Calculate spacing and create it all at once
+            let spaces = " ".repeat(rows - i);
+
+            // Create left side using slice and reverse
+            let leftSide = Alphabets.slice(0, i).split("").reverse().join("");
+
+            // Create right side using slice (excluding the middle character to avoid duplication)
+            let rightSide = Alphabets.slice(1, i);
+
+            // Print the entire row at once
+            console.log(spaces + leftSide + rightSide);
           }
           console.log();
           break;
@@ -61,6 +77,19 @@ const printPyramidPattern = ({
         case PyramidType.Stars: {
           for (let i = rows; i >= 1; i--) {
             console.log(" ".repeat(rows - i) + "* ".repeat(i));
+          }
+          console.log();
+          for (let i = rows; i >= 1; i--) {
+            let spaces = " ".repeat(rows - i);
+
+            // Create left side using slice and reverse
+            let leftSide = Alphabets.slice(0, i).split("").reverse().join("");
+
+            // Create right side using slice (excluding the middle character to avoid duplication)
+            let rightSide = Alphabets.slice(1, i);
+
+            // Print the entire row at once
+            console.log(spaces + leftSide + rightSide);
           }
           console.log();
           break;
@@ -109,9 +138,13 @@ const printPyramidPattern = ({
   }
 };
 
-// printPyramidPattern({ rows: 5, type: PyramidType.Stars, angle: Angle.Pyramid });
-// printPyramidPattern({ rows: 5, type: PyramidType.Stars, angle: Angle.PyramidInverted });
+printPyramidPattern({ rows: 5, type: PyramidType.Stars, angle: Angle.Pyramid });
+printPyramidPattern({
+  rows: 5,
+  type: PyramidType.Stars,
+  angle: Angle.PyramidInverted,
+});
 // printPyramidPattern({ rows: 5, type: PyramidType.Alphabets, angle: Angle.Pyramid });
 // printPyramidPattern({ rows: 5, type: PyramidType.Alphabets, angle: Angle.PyramidInverted });
-printPyramidPattern({ rows: 6, type: PyramidType.Stars, angle: Angle.Diamond });
-printPyramidPattern({ rows: 7, type: PyramidType.Stars, angle: Angle.Diamond });
+// printPyramidPattern({ rows: 6, type: PyramidType.Stars, angle: Angle.Diamond });
+// printPyramidPattern({ rows: 7, type: PyramidType.Stars, angle: Angle.Diamond });
